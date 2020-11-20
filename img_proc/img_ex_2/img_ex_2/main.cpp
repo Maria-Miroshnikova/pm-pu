@@ -5,6 +5,7 @@
 RGB filter_pixel(RgbImg const& img, int i, int j, int n)
 {
 	RGB bluredPixel = { 0, 0, 0 };
+	int rgb[3] = { 0, 0, 0 };
 	int count = 0;
 
 	for (int idx = i - n; idx <= i + n; ++idx)
@@ -13,17 +14,17 @@ RGB filter_pixel(RgbImg const& img, int i, int j, int n)
 		{
 			if ((idy >= 0) && (idy < img.width) && (idx >= 0) && (idx < img.height))
 			{
-				bluredPixel.Red += img.pixels[i][j].Red;
-				bluredPixel.Green += img.pixels[i][j].Green;
-				bluredPixel.Blue += img.pixels[i][j].Blue;
+				rgb[0] += img.pixels[idx][idy].Red;
+				rgb[1] += img.pixels[idx][idy].Green;
+				rgb[2] += img.pixels[idx][idy].Blue;
 				count++;
 			}
 		}
 	}
 
-	bluredPixel.Red /= count;
-	bluredPixel.Green /= count;
-	bluredPixel.Blue /= count;
+	bluredPixel.Red = rgb[0] / count;
+	bluredPixel.Green = rgb[1] / count;
+	bluredPixel.Blue = rgb[2] / count;
 
 	return bluredPixel;
 }
@@ -47,11 +48,11 @@ int main()
 {
 	try
 	{
-		RgbImg img = read_rgb_img("colored.bmp");
+		RgbImg img = read_rgb_img("kidsnoise.bmp");
 
-		window_filter(img, 1);
+		window_filter(img, 10);
 
-		write_rgb_img("coloredout.bmp", img);
+		write_rgb_img("kidsnoise_10.bmp", img);
 
 		delete_rgb_img(img);
 	}
