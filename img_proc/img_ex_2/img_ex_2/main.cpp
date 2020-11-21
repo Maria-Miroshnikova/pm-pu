@@ -12,6 +12,8 @@ RGB filter_pixel(RgbImg const& img, int i, int j, int n)
 	{
 		for (int idy = j - n; idy <= j + n; ++idy)
 		{
+			//if ((idx == i) && (idy == j)) // ne uchitivat` current pixel?
+			//	continue;
 			if ((idy >= 0) && (idy < img.width) && (idx >= 0) && (idx < img.height))
 			{
 				rgb[0] += img.pixels[idx][idy].Red;
@@ -48,11 +50,11 @@ int main()
 {
 	try
 	{
-		RgbImg img = read_rgb_img("kidsnoise.bmp");
+		RgbImg img = read_rgb_img("colored.bmp");
 
-		window_filter(img, 10);
+		window_filter(img, 6);
 
-		write_rgb_img("kidsnoise_10.bmp", img);
+		write_rgb_img("col_out_central_6.bmp", img);
 
 		delete_rgb_img(img);
 	}
