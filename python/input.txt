@@ -1,0 +1,14 @@
+01 cucumber male kek 12 12
+02 orange female kek 12 13
+03 umbrella male kek 12 15
+04 orange female kek 12 41
+05 cucumber female kek 12 13
+12 coincidence male kek 12 13
+13 coincidence male kek 12 14
+14 coincidence female kek 12 15
+06 chair female kek 21 31
+07 umbrella female kek 12 12
+08 umbrella male kek 12 13
+09 chair female kek 12 12
+10 pot male check 12 12
+11 pot female check 12 143
